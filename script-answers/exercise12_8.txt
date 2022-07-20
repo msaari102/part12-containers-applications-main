@@ -1,0 +1,6 @@
+docker-compose -f docker-compose.dev.yml up -d
+docker container ls
+docker exec -it todo-backend-mongo-1 mongo -u root -p example
+use the_database
+db.todos.insertOne({"text": "Learn to use Mongo CLI", "done": true})
+db.todos.find()
