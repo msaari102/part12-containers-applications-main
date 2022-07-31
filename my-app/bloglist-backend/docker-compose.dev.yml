@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+     - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes: 
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo_data:/data/db 
+  app:                    # The name of the service, can be anything
+    image: bloglist-backend-dev   # Declares which image to use
+    build:
+      context: . # The context will pick this directory as the "build context"
+      dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    ports:                # Declares the ports to publish
+      - 3000:3000   
+    volumes:
+      - ./:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"  
+    container_name: bloglist-back-dev-local # This will name the container todo-front-dev  
+    environment: 
+      - MONGODB_URI=mongodb://the_username:the_password@mongo:27017/the_database  
+      - PORT=3000
+      - SECRET=sallaisuus      
+      - NODE_ENV=development       
+ 

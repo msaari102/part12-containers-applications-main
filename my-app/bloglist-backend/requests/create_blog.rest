@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/blogs/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InR0ZXN0YWFqYSIsImlkIjoiNjJlNTA1MDRmYjg5MTA5MGQ1NjI2NjU2IiwiaWF0IjoxNjU5MjAyMTI0fQ.Vwd-i1Xto03iheD0A_bTFMnB0WrHEAgazIQ1V-FUxTE
+
+{
+  "title": "testi4",
+  "author": "testaaja",
+  "url": "token.com",
+  "likes": 31
+}
